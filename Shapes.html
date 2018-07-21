@@ -6,36 +6,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.13/howler.js"></script>
     <script type="text/javascript" src="paper-full.js"></script>
     <link rel="stylesheet" type="text/css" href="shapes.css">
-    <script type="text/paperscript" canvas = "myCanvas" src="data.js"></script>
+    <!--<script type="text/paperscript" canvas = "myCanvas" src="data.js"></script>-->
 
+    <script type = 'text/paperscript' canvas = "myCanvas">
+        var decagon = new Path.RegularPolygon(new Point(view.center+20, view.center-70), 6, 100);
+        decagon.fillColor = '#e9e9ff';
+        decagon.selected = true;
+        decagon.removeSegment(0);
+        decagon.removeSegment(1);
+        decagon.removeSegment(2);
+        decagon.removeSegment(3);
+        decagon.removeSegment(4);
+        decagon.addSegment();
 
-    <!--<script type="text/paperscript" canvas = "myCanvas" src="data2.js"></script>-->
-    <!--<script type = 'text/paperscript' canvas = "myCanvas">-->
-    <!--var decagon=[];-->
-      <!--var sound = new Howl({-->
-      <!--src: ['bubbles.mp3']-->
-    <!--});-->
-    <!--function onKeyDown(event) {-->
-	<!--// When a key is pressed, set the content of the text item:-->
-	<!--sound.play();-->
-	<!--var maxPoints = new Point(view.size.width,view.size.height);-->
-    <!--var randomPoint = Point.random();-->
-    <!--var point = maxPoints * randomPoint;-->
-	<!--console.log(view.size.height)-->
-	<!--var dec = new Path.RegularPolygon(point, 8, 500);-->
-	<!--dec.fillColor="orange";-->
-	<!--decagon.push(dec);-->
-<!--}-->
-
-<!--function onKeyUp(event) {-->
-	<!--// When a key is released, set the content of the text item:-->
-	<!--console.log( 'The ' + event.key + ' key was released!');-->
-<!--}-->
-	<!--function onFrame(event){-->
-	<!--for(i=0;i<decagon.length;i++){-->
-	    <!--decagon[i].fillColor.hue+=5;-->
-	    <!--decagon[i].scale(0.9)	    }-->
-    <!--}</script>-->
+    </script>
 
 </head>
 <body>
