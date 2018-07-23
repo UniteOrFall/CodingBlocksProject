@@ -1,8 +1,11 @@
 var dec;
 var i;
 // Create a new path and style it:
-
-
+var isRunning = false;
+var istime;
+var deleteCandy = false;
+var init1=40;
+var k=0;
 // Add 5 segment points to the path spread out
 // over the width of the view:
     // Uncomment the following line and run the script again
@@ -27,16 +30,16 @@ var data = {
 	},
 	w: {
 		sound: new Howl({
-  		src: ['A/clay.mp3']
+  		src: ['C/clay.mp3']
 		}),
 		color: '#2ecc71',
         shape: function () {
-            var rectangle = new Rectangle(new Point(view.center+40), new Point(view.center)-100);
+            var rectangle = new Rectangle(new Point(view.center+300), new Point(view.center)-300);
             var path = new Path.Rectangle(rectangle);
             path.strokeColor = this.color;
             path.name = "square";
             path.rotate(45);
-            path.strokewidth = 40;
+            path.strokeWidth = 20;
             decagon.push(path);
             return path;
 		}
@@ -46,14 +49,14 @@ var data = {
         sound: new Howl({
             src: ['A/confetti.mp3']
         }),
-        color: '#3498db',
+        color: ['#3498db','red','grey','green','orange'],
         shape: function () {
             for (var i = 0; i < 20; i++) {
                 // The center position is a random point in the view:
                 var path = new Path.Circle({
                     center: Point.random() * view.size,
                     radius: i / 20 + 20,
-                    fillColor: this.color,
+                    fillColor: this.color[i%5],
                     strokeColor: 'black'
                 });
                 path.fillColor.hue += i;
@@ -67,7 +70,7 @@ var data = {
     },
 	r: {
 		sound: new Howl({
-  		src: ['A/corona.mp3']
+  		src: ['C/corona.mp3']
 		}),
 		color: '#9b59b6',
         shape: function () {
@@ -79,12 +82,13 @@ var data = {
                 path.rotate(5 * i);
                 decagon.push(path);
             }
+            istime=new Date().getTime();
             return path;
         }
 	},
 		t: {
 		sound: new Howl({
-  		src: ['A/dotted-spiral.mp3']
+  		src: ['C/dotted-spiral.mp3']
 		}),
 		color: '#34495e',
             shape: function(){
@@ -103,21 +107,22 @@ var data = {
             },
 	y: {
 		sound: new Howl({
-  		src: ['A/flash-1.mp3']
+  		src: ['C/flash-1.mp3']
 		}),
-		color: '#16a085',
+		color: ['#16a085','green','red','orange','yellow','blue','bisque'],
         shape: function () {
 			console.log(view.center.x);
-            var dec = new Path.Circle(view.center, 500);
+            var dec = new Path.Circle(view.center, 300);
             dec.fillColor = this.color;
             dec.name="circles";
             decagon.push(dec);
-            for (var i = 0; i < 20; i++) {
+            istime=new Date().getTime();
+            for (var i = 0; i < 40; i++) {
                 // The center position is a random point in the view:
                 var path = new Path.Circle({
                     center: Point.random() * view.size,
                     radius: i / 20 + 20,
-                    fillColor: this.color,
+                    fillColor: this.color[i%7],
                     strokeColor: 'black'
                 });
                 path.fillColor.hue += i;
@@ -131,7 +136,7 @@ var data = {
 	},
 	u: {
 		sound: new Howl({
-  		src: ['A/flash-2.mp3']
+  		src: ['C/flash-2.mp3']
 		}),
 		color: '#27ae60',
 		shape: function(){
@@ -148,7 +153,7 @@ var data = {
 	},
 	i: {
 		sound: new Howl({
-  		src: ['A/flash-3.mp3']
+  		src: ['C/flash-3.mp3']
 		}),
 		color: '#2980b9',
         shape: function(){
@@ -163,91 +168,109 @@ var data = {
 	},
 	o: {
 		sound: new Howl({
-			src: ['A/glimmer.mp3']
+			src: ['C/glimmer.mp3']
 		}),
 		color: '#8e44ad',
+		shape: function(){
+            var deca = new Path.RegularPolygon(new Point(view.center+20, view.center), 15, 200);
+            deca.fillColor = this.color;
+            deca.selected = true;
+            deca.name="changing";
+            decagon.push(deca);
+		}
 	},
 	p: {
 		sound: new Howl({
-  		src: ['A/moon.mp3']
+  		src: ['C/moon.mp3']
 		}),
 		color: '#2c3e50'
 	},
 	a: {
 		sound: new Howl({
-  		src: ['A/pinwheel.mp3']
+  		src: ['C/pinwheel.mp3']
 		}),
-		color: '#f1c40f'
+		color: '#f1c40f',
+        shape:function(){
+		    init1=40;
+            var myPath = new Path();
+            myPath.strokeColor = 'pink';
+            myPath.add(new Point(40,view.size.height/2+40));
+            myPath.name = 'zigzag';
+            myPath.strokeWidth=20;
+            myPath.selected=true;
+            decagon.push(myPath);
+
+        }
 	},
 	s: {
 		sound: new Howl({
-  		src: ['A/piston-1.mp3']
+  		src: ['C/piston-1.mp3']
 		}),
 		color: '#e67e22'
 	},
 		d: {
 		sound: new Howl({
-  		src: ['A/piston-2.mp3']
+  		src: ['C/piston-2.mp3']
 		}),
 		color: '#e74c3c'
 	},
 	f: {
 		sound: new Howl({
-  		src: ['A/prism-1.mp3']
+  		src: ['C/prism-1.mp3']
 		}),
 		color: '#95a5a6'
 	},
 	g: {
 		sound: new Howl({
-  		src: ['A/prism-2.mp3']
+  		src: ['C/prism-2.mp3']
 		}),
 		color: '#f39c12'
 	},
 	h: {
 		sound: new Howl({
-  		src: ['A/prism-3.mp3']
+  		src: ['C/prism-3.mp3']
 		}),
 		color: '#d35400'
 	},
 	j: {
 		sound: new Howl({
-  		src: ['A/splits.mp3']
+  		src: ['C/splits.mp3']
 		}),
 		color: '#1abc9c'
 	},
 	k: {
 		sound: new Howl({
-  		src: ['A/squiggle.mp3']
+  		src: ['C/squiggle.mp3']
 		}),
 		color: '#2ecc71'
 	},
 	l: {
 		sound: new Howl({
-  		src: ['A/strike.mp3']
+  		src: ['C/strike.mp3']
 		}),
 		color: '#3498db'
 	},
 	z: {
 		sound: new Howl({
-  		src: ['A/suspension.mp3']
+  		src: ['C/suspension.mp3']
 		}),
 		color: '#9b59b6'
 	},
 	x: {
 		sound: new Howl({
-  		src: ['A/timer.mp3']
+  		src: ['C/timer.mp3']
 		}),
 		color: '#34495e'
 	},
 	c: {
 		sound: new Howl({
-  		src: ['A/ufo.mp3']
+  		src: ['C/ufo.mp3']
 		}),
 		color: '#16a085'
 	},
 	v: {
 		sound: new Howl({
-  		src: ['A/veil.mp3']
+  		src: ['C/veil.mp3']
 		}),
 		color: '#27ae60'
 	},
@@ -259,13 +282,13 @@ var data = {
 	},
 	n: {
 		sound: new Howl({
-			src: ['A/zig-zag.mp3']
+			src: ['C/zig-zag.mp3']
 		}),
 		color: '#8e44ad'
 	},
 	m: {
 		sound: new Howl({
-  		src: ['A/moon.mp3']
+  		src: ['C/moon.mp3']
 		}),
 		color: '#2c3e50'
 	}
@@ -289,9 +312,15 @@ function onFrame(event) {
                 decagon[i].strokeColor.hue += 5;
                 decagon[i].scale(0.99);
                 decagon[i].rotate(3);
+                if(decagon[i].area<1){
+                    remov(i,decagon[i]);
+                }
             } else if(decagon[i].name==='square2'){
                 decagon[i].strokeColor.hue += 5;
                 decagon[i].rotate(3);
+                if(new Date().getTime() - istime >=1000) {
+                    remov(i, decagon[i]);
+                }
                 // decagon[i].scale(0.9);
 
 			}
@@ -302,27 +331,66 @@ function onFrame(event) {
                 decagon[i].rotate(3);
                 decagon[i].scale(0.9);
             }
-            else if(decagon[i].name==='candyup'){
-        	    if(decagon[i].position.x<1000) {
-                    decagon[i].position.x +=Math.random() * 20;
-                }else{
-                    decagon[i].position.x -= Math.random() * 20;
+            else if(decagon[i].name==='candyup') {
+                if (deleteCandy == true) {
+                	remov(i,decagon[i]);
+                	deleteCandy=false;
+                } else {
+                    if (decagon[i].position.x < 1000) {
+                        decagon[i].position.x += Math.random() * 40;
+                    } else {
+                        decagon[i].position.x -= Math.random() * 40;
+                    }
+                    decagon[i].position.y -= Math.random() * 40;
                 }
-                decagon[i].position.y -=  Math.random() * 20;
             }
-            else if(decagon[i].name==='circles'){
+            else if(decagon[i].name==='circles') {
                 decagon[i].fillColor.hue += 5;
-        	}
+                console.log(new Date().getTime()-istime);
+                if(new Date().getTime() - istime >=1000) {
+                    remov(i, decagon[i]);
+                    deleteCandy=true;
+                }
+            }
                 else if(decagon[i].name==='circle'){
                 decagon[i].fillColor.hue += 5;
                 decagon[i].scale(0.9);
                 decagon[i].rotate(3);
+                if(decagon[i].area<1){
+                    remov(i,decagon[i]);
+                }
 			}else if(decagon[i].name==='stripes'){
 
                     decagon[i].position.x -= 20;
 			}else if(decagon[i].name==='stripes2'){
 
                 decagon[i].position.x += 20;
+            }else if(decagon[i].name==='changing'&& isRunning===false){
+                setTimeout(function(){
+                    isRunning=false;
+				},70);
+                segmentRemover(decagon[i]);
+                if(decagon[i].segments.length==0){
+                	decagon.splice(i,1);
+				}
+        		isRunning=true;
+        		console.log(isRunning);
+			}else if(decagon[i].name==='zigzag'){
+        	    init1+=160;
+                    if(k%2==0){
+
+                        decagon[i].add(new Point(init1,view.size.height/2-160));
+
+                        decagon[i].smooth();
+
+                        k++;
+                    }else{
+                        decagon[i].smooth();
+        	            decagon[i].add(new Point(init1,view.size.height/2));
+        	            k++;
+                        decagon[i].smooth();
+
+                    }
             }
 
         }
@@ -334,4 +402,15 @@ function onFrame(event) {
         //     decagon[i].scale(0.9);
         // }
 
+}
+function segmentRemover(dec) {
+		dec.removeSegment(0);
+		isRunning=false;
+		dec.fillColor.hue+=10;
+
+}
+function remov(index,dec){
+
+  		decagon.splice(i,1);
+    dec.remove();
 }
