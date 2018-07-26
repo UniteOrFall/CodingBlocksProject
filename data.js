@@ -6,6 +6,13 @@ var istime;
 var deleteCandy = false;
 var init1=40;
 var k=0;
+var upMovement=true;
+var isPlane=false;
+var planePos;
+var gameEnd = false;
+var shootPosition;
+var widthPosition;
+var meteorTime;
 // Add 5 segment points to the path spread out
 // over the width of the view:
     // Uncomment the following line and run the script again
@@ -25,6 +32,7 @@ var data = {
             dec.fillColor = this.color;
             dec.name="circle";
             decagon.push(dec);
+            gameEnd=false;
             return dec;
         }
 	},
@@ -183,7 +191,21 @@ var data = {
 		sound: new Howl({
   		src: ['C/moon.mp3']
 		}),
-		color: '#2c3e50'
+		color: '#2c3e50',
+        shape:function(){
+		    if(isPlane===false) {
+                var raster = new Raster('plane');
+                raster.position = new Point(45, view.size.height / 2);
+                console.log(raster.height);
+                raster.rotate(90);
+                raster.name = "plane";
+                console.log(raster.position.y);
+                decagon.push(raster);
+                planePos = decagon.length;
+                isPlane = true;
+                gameEnd = true;
+            }
+        }
 	},
 	a: {
 		sound: new Howl({
@@ -206,14 +228,36 @@ var data = {
 		sound: new Howl({
   		src: ['C/piston-1.mp3']
 		}),
-		color: '#e67e22'
+		color: '#e67e22',
+        shape:function(){
+		    if(isPlane) {
+                var raster = new Raster('shooter');
+                raster.position = planePos;
+                raster.rotate(90);
+                console.log(raster.position.x);
+                raster.name = "shooter";
+                decagon.push(raster);
+            }
+        }
 	},
 		d: {
-		sound: new Howl({
-  		src: ['C/piston-2.mp3']
-		}),
-		color: '#e74c3c'
-	},
+            sound: new Howl({
+                src: ['C/piston-2.mp3']
+            }),
+            color: '#e74c3c',
+            shape: function () {
+                if (isPlane) {
+                    var raster = new Raster('meteor');
+                    raster.position = new Point(view.size.width,(Math.random()*view.size.height));
+                    raster.scale = Math.random();
+                    raster.rotate(90);
+                    console.log(raster.position.x);
+                    meteorTime=new Date().getTime();
+                    raster.name = "meteor";
+                    decagon.push(raster);
+                }
+            }
+        },
 	f: {
 		sound: new Howl({
   		src: ['C/prism-1.mp3']
@@ -376,21 +420,65 @@ function onFrame(event) {
         		isRunning=true;
         		console.log(isRunning);
 			}else if(decagon[i].name==='zigzag'){
-        	    init1+=160;
+        	    init1+=120;
                     if(k%2==0){
 
                         decagon[i].add(new Point(init1,view.size.height/2-160));
 
-                        decagon[i].smooth();
 
                         k++;
                     }else{
                         decagon[i].smooth();
-        	            decagon[i].add(new Point(init1,view.size.height/2));
+        	            decagon[i].add(new Point(init1,view.size.height/2+160));
         	            k++;
                         decagon[i].smooth();
 
                     }
+                    //Portion For the Plane not as i wanted due to time strain but will become better after some works
+                //Flow as i wanted but i want it to be more key press centric.
+            }else if(decagon[i].name==='plane'){
+        	    if(gameEnd===false){
+        	        isPlane=false;
+        	        remov(i,decagon[i]);
+                }
+        	    if(!upMovement) {
+                    decagon[i].position.y += 3;
+                    planePos = (decagon[i].position+10);
+                }else if(upMovement){
+                    decagon[i].position.y -= 3;
+                    planePos = (decagon[i].position-10);
+                }
+                if(decagon[i].position.y>view.size.height){
+                    upMovement=true;
+                }else if(decagon[i].position.y<10){
+        	        console.log(decagon[i].position.y);
+        	        upMovement=false;
+                }
+
+                //This Portion is For controlling the bullets plane shoots
+            }else if(decagon[i].name==='shooter'){
+                    shootPosition = decagon[i].position.y;
+                    widthPosition = decagon[i].position.x;
+                    console.log(widthPosition);
+
+                decagon[i].position.x +=10;
+                if(decagon[i].position.x>view.size.width){
+                    remov(i,decagon[i]);
+                }
+                //Meteors Showers
+            }else if(decagon[i].name==='meteor'){
+                decagon[i].position.x-=6;
+                if((new Date().getTime()-meteorTime)>=1000){
+                    data.d.shape();
+                }
+                if((shootPosition>(decagon[i].position.y-(decagon[i].height/2))&&shootPosition<(decagon[i].position.y+(decagon[i].height/2)))&&widthPosition>decagon[i].position.x)
+                {
+                    remov(i,decagon[i]);
+                    }
+                if(decagon[i].position.x<0||isPlane===false)
+                {
+                    remov(i,decagon[i]);
+                }
             }
 
         }
@@ -413,4 +501,8 @@ function remov(index,dec){
 
   		decagon.splice(i,1);
     dec.remove();
+    if(isPlane===true){
+        shootPosition=0;
+        widthPosition=0;
+    }
 }

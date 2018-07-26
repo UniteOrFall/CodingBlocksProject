@@ -14,20 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="data.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../CodingBlocksProject/data.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1428">
-              <caret line="84" column="8" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="data.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="357" column="37" lean-forward="true" selection-start-line="357" selection-start-column="37" selection-end-line="357" selection-end-column="37" />
+            <state relative-caret-position="21">
+              <caret line="470" column="58" selection-start-line="470" selection-start-column="58" selection-end-line="470" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -44,8 +35,8 @@
       <file leaf-file-name="shapes.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shapes.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="34">
+              <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -53,8 +44,8 @@
       <file leaf-file-name="Shapes.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Shapes.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="79" />
+            <state relative-caret-position="484">
+              <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -78,6 +69,8 @@
       <find>v</find>
       <find>cand</find>
       <find>w:</find>
+      <find>p:</find>
+      <find>istime</find>
     </findStrings>
     <replaceStrings>
       <replace>C/</replace>
@@ -91,8 +84,8 @@
       <list>
         <option value="$PROJECT_DIR$/paperjs-v0.11.5/shape.css" />
         <option value="$PROJECT_DIR$/data2.js" />
-        <option value="$PROJECT_DIR$/Shapes.html" />
         <option value="$PROJECT_DIR$/shapes.css" />
+        <option value="$PROJECT_DIR$/Shapes.html" />
         <option value="$PROJECT_DIR$/data.js" />
       </list>
     </option>
@@ -118,7 +111,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -130,12 +122,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../RailwayAPI" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -189,14 +182,18 @@
       <workItem from="1532268739733" duration="58000" />
       <workItem from="1532275460273" duration="4627000" />
       <workItem from="1532283991935" duration="945000" />
+      <workItem from="1532330431924" duration="3471000" />
+      <workItem from="1532447981997" duration="5000000" />
+      <workItem from="1532537596708" duration="4857000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62078000" />
+    <option name="totallyTimeSpent" value="75406000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24330357" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -224,7 +221,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Neuronal-Synchrony/index.html" />
     <entry file="file://$PROJECT_DIR$/Neuronal-Synchrony/src/animations.js" />
     <entry file="file://$PROJECT_DIR$/data.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -444,10 +440,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Neuronal-Synchrony/third-party/jquery.js" />
     <entry file="file://$PROJECT_DIR$/Neuronal-Synchrony/src/animations.js" />
+    <entry file="file://$PROJECT_DIR$/../CodingBlocksProject added more/shapes.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/../CodingBlocksProject/data.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
+        <state relative-caret-position="17">
           <caret line="84" column="8" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shapes.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -458,24 +464,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shapes.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Shapes.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="79" />
+        <state relative-caret-position="484">
+          <caret line="29" column="57" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="357" column="37" lean-forward="true" selection-start-line="357" selection-start-column="37" selection-end-line="357" selection-end-column="37" />
+        <state relative-caret-position="21">
+          <caret line="470" column="58" selection-start-line="470" selection-start-column="58" selection-end-line="470" selection-end-column="58" />
         </state>
       </provider>
     </entry>
